@@ -1,3 +1,12 @@
+
+import projects1 from '../img/website_1.jpg';
+import projects2 from '../img/website_2.jpg';
+import projects3 from '../img/website_3.jpg';
+import projects4 from '../img/website_4.jpg';
+import projects5 from '../img/website_5.jpg';
+import projects6 from '../img/website_6.jpg';
+import projects7 from '../img/website_7.jpg';
+
 export interface Service {
   id: string;
   title: string;
@@ -92,15 +101,15 @@ export interface Project {
   category: string;
   img: string;
   area: string;
+   links: string;
 }
 
 export const PROJECTS: Project[] = [
-  { id: 1, title: 'Chennai Gold Palace', category: 'Ecommerce', img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80', area: 'T Nagar' },
-  { id: 2, title: 'Adyar Medical Clinic', category: 'Healthcare', img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80', area: 'Adyar' },
-  { id: 3, title: 'Elite School of Arts', category: 'Education', img: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80', area: 'Anna Nagar' },
-  { id: 4, title: 'TechHub Startups', category: 'Corporate', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80', area: 'OMR' },
-  { id: 5, title: 'Velachery Organic Store', category: 'Retail', img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80', area: 'Velachery' },
-  { id: 6, title: 'Tambaram Real Estate', category: 'Real Estate', img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80', area: 'Tambaram' },
+  { id: 1, title: 'daat', category: 'Corporate', img: projects1, area: 'T Nagar' ,links:'https://daat.ae/'},
+  { id: 2, title: 'innoceptions', category: 'IT Infrastructure', img: projects2, area: 'Adyar',links:'https://innoceptions.com/' },
+  { id: 3, title: 'Techguru Tirupur', category: 'IT Infrastructure', img: projects7, area: 'Anna Nagar',links:'https://techgurutirupur.co.in/' },
+  { id: 4, title: 'hereafter clothing', category: 'E-Commerce', img:projects5, area: 'OMR',links:' https://hereafterclothing.com/' },
+  { id: 5, title: 'Meghle', category: 'Corporate', img: projects6, area: 'Velachery' ,links:' https://meghle.com/'},
 ];
 
 export const AREAS: Area[] = [

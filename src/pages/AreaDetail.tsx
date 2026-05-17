@@ -3,7 +3,20 @@ import { useParams, Link } from 'react-router-dom';
 import { AREAS, SERVICES } from '@/src/data/websiteData';
 import { SEO } from '@/src/components/SEO';
 import { Section, SectionHeader } from '@/src/components/Section';
-import { CheckCircle2, Star, ArrowRight, Smartphone, Globe, Zap, MessageSquare, ShieldCheck, ShoppingCart, Phone } from 'lucide-react';
+import {
+  CheckCircle2,
+  Star,
+  ArrowRight,
+  Smartphone,
+  Globe,
+  Zap,
+  MessageSquare,
+  ShoppingCart,
+  Phone,
+  ShieldCheck,
+  MonitorSmartphone,
+  LayoutDashboard,
+} from 'lucide-react';
 import { motion } from 'motion/react';
 import { cn } from '@/src/lib/utils';
 
@@ -16,203 +29,294 @@ const AreaDetail = () => {
   }
 
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": `Charles Web Designer - ${area.name}`,
-    "description": `Professional website designer in ${area.name}, Chennai. Providing high-quality web design and SEO services for businesses in ${area.name}.`,
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": area.name,
-      "addressRegion": "Chennai, Tamil Nadu",
-      "addressCountry": "IN"
-    }
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: `Charles Web Designer - ${area.name}`,
+    description: `Professional website designer in ${area.name}, Chennai.`,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: area.name,
+      addressRegion: 'Chennai, Tamil Nadu',
+      addressCountry: 'IN',
+    },
   };
 
   return (
     <>
-      <SEO 
-        title={`Website Designer in ${area.name} | Web Design Company in ${area.name}`}
-        description={`Top-rated Website Designer in ${area.name}. We help businesses in ${area.name}, Chennai build professional, SEO-friendly websites. Get a free quote today!`}
+      <SEO
+        title={`Website Designer in ${area.name} | Web Design Company`}
+        description={`Professional website designer in ${area.name}. We create modern, SEO-friendly websites for local businesses.`}
         keywords={area.keywords}
         schema={schema}
       />
 
-      {/* Hero Section */}
-      <Section className="bg-slate-900 pt-32 h-[80vh] flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80')] opacity-5 bg-cover bg-center"></div>
-        <div className="relative z-10 text-center">
+      {/* HERO */}
+      <Section className="bg-slate-900 pt-32 min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10"></div>
+
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary-yellow/10 blur-[120px] rounded-full"></div>
+
+        <div className="relative z-10 text-center max-w-5xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-primary-yellow text-xs font-bold uppercase tracking-widest mb-6"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 bg-white/5 text-primary-yellow text-xs uppercase tracking-[3px] font-bold mb-8"
           >
-            Serving Local Businesses in {area.name}
+            Premium Web Design Services
           </motion.div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+
+          <motion.h1
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-7xl font-bold mb-6"
+            className="text-5xl md:text-7xl font-black leading-tight mb-8"
           >
-            Website Designer in <span className="text-gradient underline decoration-primary-yellow/20">{area.name}</span>
+            Website Designer in{' '}
+            <span className="text-gradient">{area.name}</span>
           </motion.h1>
-          <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-            Professional web design services for shops, startups, schools, and hospitals in {area.name}, Chennai. We build websites that rank on Google and convert visitors into customers.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/contact" className="bg-gradient text-dark-bg px-8 py-4 rounded-full font-bold w-full sm:w-auto glow-yellow">
-              Consult with Charles
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-slate-400 text-lg md:text-2xl leading-relaxed max-w-3xl mx-auto mb-12"
+          >
+            We build modern websites for shops, startups, clinics,
+            restaurants, schools, and businesses in {area.name}. Fast,
+            responsive, SEO-optimized, and designed to generate more customers.
+          </motion.p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <Link
+              to="/contact"
+              className="bg-gradient text-dark-bg px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-all"
+            >
+              Get Free Quote
             </Link>
-            <Link to="/portfolio" className="border border-white/20 text-white px-8 py-4 rounded-full font-bold w-full sm:w-auto hover:bg-white/5">
-              View Local Projects
+
+            <Link
+              to="/portfolio"
+              className="border border-white/20 px-10 py-5 rounded-full font-bold text-lg hover:bg-white/5 transition-all"
+            >
+              View Portfolio
             </Link>
           </div>
         </div>
       </Section>
 
-      {/* Intro Text - Thick for SEO */}
+      {/* ABOUT */}
       <Section className="bg-dark-bg">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold">Empowering Businesses in <span className="text-primary-yellow">{area.name}</span> with Modern Web Presence</h2>
-            <div className="space-y-6 text-slate-400 leading-relaxed text-base md:text-lg">
+            <h2 className="text-4xl md:text-5xl font-black leading-tight">
+              Grow Your Business in{' '}
+              <span className="text-primary-yellow">{area.name}</span>
+            </h2>
+
+            <div className="space-y-6 text-slate-400 leading-relaxed text-lg">
               <p>
-                Are you looking for a reliable <strong>Website Designer in {area.name}</strong>? Charles designer is your Go-To partner for all things digital. In today's competitive market, having just a website isn't enough; you need a digital asset that works for you. Businesses in {area.name} ranging from small retail shops to large healthcare facilities are moving online, and we are here to lead that transition.
+                Your website is your digital showroom. Businesses today need
+                professional websites that look modern, load quickly, and
+                generate trust.
               </p>
+
               <p>
-                Our web design company in {area.name} understands the local pulse. Whether you are located near the {area.name} main market or the residential hubs, our SEO-optimized website structures ensure that local customers find you first. When someone searches for your service in {area.name}, your business should appear on the first page of Google. That is exactly what we specialize in.
+                We create custom business websites with strong SEO structure,
+                premium UI/UX, mobile responsiveness, and conversion-focused
+                layouts.
               </p>
+
               <p>
-                We don't just use templates. Each website we build for {area.name} clients is a unique masterpiece, refined for speed, mobile responsiveness, and high conversion rates. Our design philosophy combines the vibrant energy of Chennai with international aesthetic standards.
+                Whether you need a company website, ecommerce store, portfolio,
+                landing page, or custom web application, we provide complete
+                solutions tailored for your business.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-6">
-              <StatItem number="150+" text="Happy Clients" />
-              <StatItem number="5 Star" text="Google Rating" />
+
+            <div className="grid grid-cols-2 gap-8">
+              <StatItem number="150+" text="Projects Completed" />
+              <StatItem number="5 Star" text="Client Reviews" />
             </div>
           </div>
+
           <div className="relative">
-             <div className="aspect-square glass-card overflow-hidden group">
-                <img 
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80" 
-                  alt="Web Design Process" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-bg to-transparent opacity-60"></div>
-                <div className="absolute bottom-8 left-8 right-8">
-                  <p className="text-primary-yellow font-bold text-xl mb-1">Tailored for {area.name}</p>
-                  <p className="text-white text-sm">Strategic web layouts designed to convert local traffic into loyal customers.</p>
-                </div>
-             </div>
-             {/* Floating decorative elements */}
-             <div className="absolute -top-6 -right-6 w-24 h-24 bg-primary-orange/20 rounded-full blur-2xl"></div>
-             <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary-yellow/10 rounded-full blur-3xl"></div>
+            <div className="overflow-hidden rounded-3xl border border-white/10">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80"
+                alt="Website Design"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="absolute -bottom-6 -left-6 bg-primary-yellow/10 blur-3xl rounded-full w-40 h-40"></div>
           </div>
         </div>
       </Section>
 
-      {/* Services in Area */}
-      <Section className="bg-slate-900 border-y border-white/5">
-        <SectionHeader 
-          title={`Our Web Services in ${area.name}`}
-          subtitle="Comprehensive digital solutions specifically crafted for the local business ecosystem of Chennai."
+      {/* SERVICES */}
+      <Section className="bg-slate-900">
+        <SectionHeader
+          title={`Services Available in ${area.name}`}
+          subtitle="Complete website solutions for businesses and startups."
         />
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {SERVICES.map((s) => (
-            <div key={s.id} className="glass-card p-8 hover:border-primary-yellow/30 transition-colors group">
-              <div className="mb-6 w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-primary-yellow group-hover:bg-primary-yellow group-hover:text-dark-bg transition-colors">
+            <div
+              key={s.id}
+              className="glass-card p-8 rounded-3xl border border-white/5 hover:border-primary-yellow/20 transition-all duration-300 hover:-translate-y-2"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-primary-yellow/10 flex items-center justify-center text-primary-yellow mb-6">
                 {getServiceIcon(s.id)}
               </div>
-              <h3 className="text-xl font-bold mb-4">{s.title}</h3>
+
+              <h3 className="text-2xl font-bold mb-4">{s.title}</h3>
+
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Looking for {s.title.toLowerCase()} in {area.name}? We provide top-tier {s.title} with a focus on business growth.
+                Premium {s.title.toLowerCase()} services with modern UI,
+                responsive layouts, SEO optimization, and high-performance
+                development.
               </p>
-              <Link to={`/services/${s.slug}`} className="flex items-center gap-2 text-primary-yellow font-bold text-sm">
-                Learn More <ArrowRight size={14} />
+
+              <Link
+                to={`/services/${s.slug}`}
+                className="flex items-center gap-2 text-primary-yellow font-bold"
+              >
+                Learn More <ArrowRight size={16} />
               </Link>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* Features List - Thick for SEO */}
-      <Section className="bg-dark-bg overflow-hidden relative">
-        <div className="max-w-4xl mx-auto space-y-20">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Why Businesses in <span className="text-primary-yellow">{area.name}</span> Choose Charles?</h2>
-            <p className="text-slate-400 text-lg">We don't just build websites; we build revenue-generating machines for the entrepreneurs of {area.name}.</p>
-          </div>
-          
-          <div className="space-y-12">
-             <FeatureBlock 
-               title={`Local SEO Expertise for ${area.name}`}
-               description={`If you are in ${area.name}, your website needs to show up when customers nearby search for your products. We optimize your GMB (Google Business Profile) along with your website to ensure you dominate local searches in ${area.name}.`}
-               icon={<Zap size={24} />}
-             />
-             <FeatureBlock 
-               title="Professional Mobile Responsiveness"
-               description={`Over 80% of users in ${area.name} access the web via mobile devices. Our websites are 'Thumb-Friendly' and adapt perfectly to all screen sizes, from smart TVs to compact smartphones.`}
-               icon={<Smartphone size={24} />}
-             />
-             <FeatureBlock 
-               title={`WordPress & Shopify for ${area.name} Sellers`}
-               description={`Whether you want a simple corporate site or a massive ecommerce platform, our Shopify and WordPress specialists in ${area.name} ensure your store is robust, secure, and fast.`}
-               icon={<Globe size={24} />}
-             />
-             <FeatureBlock 
-               title="24/7 WhatsApp Integration"
-               description="Direct communication is key in Chennai. We integrate floating WhatsApp buttons that connect your customers directly to your sales team with one click."
-               icon={<MessageSquare size={24} />}
-             />
-          </div>
-        </div>
-      </Section>
-
-      {/* Pricing - Simple for now */}
-      <Section className="bg-slate-900">
-        <SectionHeader 
-          title="Transparent Pricing Packages"
-          subtitle={`Affordable web design costs in ${area.name}, Chennai with zero hidden fees.`}
+      {/* FEATURES */}
+      <Section className="bg-dark-bg">
+        <SectionHeader
+          title="Why Choose Charles Web Designer?"
+          subtitle="Modern technology combined with creative design."
         />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-           <PricingCard title="Starter" price="₹9,999" features={['5 Pages', 'Free Domain (1yr)', 'Free Hosting (1yr)', 'Mobile Responsive', 'Social Media Links']} />
-           <PricingCard title="Business" price="₹19,999" features={['10 Pages', 'SEO Setup', 'GMB Optimization', 'WhatsApp Integration', 'Content Writing']} featured />
-           <PricingCard title="Ecommerce" price="₹49,999" features={['Unlimited Products', 'Payment Gateway', 'Inventory Management', 'Invoice System', 'Premium Support']} />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <FeatureBlock
+            title="Mobile Responsive Design"
+            description="Your website will work perfectly on mobiles, tablets, laptops, and smart TVs."
+            icon={<Smartphone size={26} />}
+          />
+
+          <FeatureBlock
+            title="SEO Friendly Structure"
+            description="Built with modern SEO standards to improve your Google visibility."
+            icon={<Zap size={26} />}
+          />
+
+          <FeatureBlock
+            title="WhatsApp Integration"
+            description="Direct customer communication with floating WhatsApp buttons."
+            icon={<MessageSquare size={26} />}
+          />
+
+          <FeatureBlock
+            title="Secure Development"
+            description="Professional coding standards with optimized performance and security."
+            icon={<ShieldCheck size={26} />}
+          />
         </div>
       </Section>
 
-      {/* Final SEO Text - Massive word count contribution */}
-      <Section className="bg-dark-bg text-slate-400 text-sm leading-relaxed border-t border-white/5">
-        <div className="max-w-5xl mx-auto space-y-8">
-          <h3 className="text-white text-xl font-bold">A Deeper Dive into Web Design in {area.name}</h3>
-          <p>
-            When we talk about <strong>website design in {area.name}</strong>, we are talking about a unique demographic. People in {area.name} value trust and speed. A slow website that looks unprofessional is a death sentence for your brand reputation. This is why we focus heavily on "Web Vitals" - the performance metrics that Google uses to rank sites.
-          </p>
-          <p>
-            The industries in {area.name} are varied. From the bustling educational sector (schools and coaching centers) near {area.name} to the specialized medical clinics and hospitals, each requires a different UX strategy. A school website in {area.name} needs clear parent-teacher portals, while a hospital needs prominent appointment booking forms. We specialize in identifying these nuances and building custom solutions that fit.
-          </p>
-          <p>
-             Our <strong>SEO Expert services in {area.name}</strong> go beyond just keywords. We look at semantic search entities. If you are a real estate agent in {area.name}, we don't just target "flats for sale in {area.name}", we target "3BHK luxury apartments near {area.name} station" because that is what real buyers search for.
-          </p>
-          <p>
-             Our <strong>Shopify development for {area.name} stores</strong> integrates local payment players like Razorpay and Instamojo, ensuring that your Chennai customers can pay via UPI (GPay, PhonePe) seamlessly. This friction-less checkout is what drives 50% more sales compared to generic international setups.
-          </p>
-          <p>
-             Conclusion: If you are serious about your business growth in {area.name}, don't settle for a "just okay" website. Partner with Charles Web Designer Chennai, and let's craft a digital future for your brand that truly represents the excellence of Chennai's business spirit.
-          </p>
+      {/* PRICING */}
+      {/* <Section className="bg-slate-900">
+        <SectionHeader
+          title="Website Pricing Packages"
+          subtitle={`Professional website solutions for businesses in ${area.name}.`}
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <PricingCard
+            title="Starter Website"
+            price="₹12,999"
+            description="Perfect for startups and small businesses."
+            features={[
+              '5 Page Website',
+              'Modern UI Design',
+              'Mobile Responsive Layout',
+              'Free Hosting Included',
+              'WhatsApp Integration',
+              'Contact Form Setup',
+              'Basic SEO Optimization',
+              'Fast Loading Speed',
+              'Google Map Integration',
+              'Social Media Links',
+              '1 Revision Support',
+            ]}
+          />
+
+          <PricingCard
+            title="Business Website"
+            price="₹24,999"
+            description="Perfect for growing businesses and lead generation."
+            features={[
+              '10+ Premium Pages',
+              'Advanced UI/UX Design',
+              'Free Hosting Included',
+              'Admin Panel / CMS',
+              'Advanced SEO Setup',
+              'Google Business Optimization',
+              'Call & WhatsApp Buttons',
+              'Premium Animations',
+              'Lead Capture Forms',
+              'Performance Optimization',
+              'Blog Integration',
+              '30 Days Support',
+            ]}
+            featured
+          />
+
+          <PricingCard
+            title="Ecommerce Website"
+            price="₹54,999"
+            description="Complete ecommerce solution for online stores."
+            features={[
+              'Unlimited Products',
+              'Custom Ecommerce Design',
+              'Free Hosting Included',
+              'Shopping Cart System',
+              'Razorpay Integration',
+              'Order Management',
+              'Invoice System',
+              'Admin Dashboard',
+              'SEO Product Pages',
+              'Advanced Security Setup',
+              'Speed Optimization',
+              '1 Year Support',
+            ]}
+          />
         </div>
-      </Section>
+      </Section> */}
 
       {/* CTA */}
       <Section className="bg-gradient text-dark-bg py-24">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">Ready to dominate {area.name} search results?</h2>
-          <p className="text-dark-bg/80 text-xl font-medium mb-12">Get a free website audit and a quote for your {area.name} business today.</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Link to="/contact" className="bg-dark-bg text-white px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-transform flex items-center gap-2">
-              <Phone size={20} /> Call Now: +91 75988 25487
+        <div className="text-center max-w-4xl mx-auto">
+          <h2 className="text-5xl font-black mb-8">
+            Ready to Build Your Website?
+          </h2>
+
+          <p className="text-xl font-medium opacity-80 mb-12">
+            Let’s create a modern website that helps your business grow faster.
+          </p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <Link
+              to="/contact"
+              className="bg-dark-bg text-white px-10 py-5 rounded-full font-bold text-lg flex items-center justify-center gap-3 hover:scale-105 transition-all"
+            >
+              <Phone size={20} />
+              Call Now
             </Link>
-            <Link to="/contact" className="bg-white/20 text-dark-bg px-10 py-5 rounded-full font-bold text-lg hover:bg-white/30 transition-all border border-dark-bg/10">
+
+            <Link
+              to="/contact"
+              className="bg-white/20 px-10 py-5 rounded-full font-bold text-lg border border-dark-bg/10 hover:bg-white/30 transition-all"
+            >
               Get Free Quote
             </Link>
           </div>
@@ -222,58 +326,133 @@ const AreaDetail = () => {
   );
 };
 
-const StatItem = ({ number, text }: { number: string; text: string }) => (
-  <div className="space-y-1">
-    <div className="text-3xl font-bold text-primary-yellow font-display">{number}</div>
-    <div className="text-sm text-slate-500 uppercase tracking-widest">{text}</div>
+const StatItem = ({
+  number,
+  text,
+}: {
+  number: string;
+  text: string;
+}) => (
+  <div>
+    <div className="text-4xl font-black text-primary-yellow">
+      {number}
+    </div>
+
+    <div className="text-slate-500 uppercase tracking-[3px] text-sm mt-1">
+      {text}
+    </div>
   </div>
 );
 
-const FeatureBlock = ({ title, description, icon }: { title: string; description: string; icon: React.ReactNode }) => (
-  <div className="flex gap-6 group">
-    <div className="flex-shrink-0 w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-primary-yellow group-hover:bg-gradient group-hover:text-dark-bg transition-all">
+const FeatureBlock = ({
+  title,
+  description,
+  icon,
+}: {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}) => (
+  <div className="flex gap-5">
+    <div className="w-14 h-14 rounded-2xl bg-primary-yellow/10 border border-primary-yellow/10 flex items-center justify-center text-primary-yellow flex-shrink-0">
       {icon}
     </div>
+
     <div>
-      <h3 className="text-xl font-bold mb-2 group-hover:text-primary-yellow transition-colors">{title}</h3>
-      <p className="text-slate-400 leading-relaxed text-sm">{description}</p>
+      <h3 className="text-2xl font-bold mb-3">{title}</h3>
+
+      <p className="text-slate-400 leading-relaxed">
+        {description}
+      </p>
     </div>
   </div>
 );
 
-const PricingCard = ({ title, price, features, featured = false }: { title: string; price: string; features: string[]; featured?: boolean }) => (
-  <div className={cn(
-    "p-10 border transition-all flex flex-col",
-    featured ? "bg-white/5 border-primary-yellow scale-105 relative z-10 rounded-2xl shadow-2xl" : "border-white/10 rounded-2xl hover:border-white/20"
-  )}>
-    {featured && <div className="absolute top-0 right-10 -translate-y-1/2 bg-primary-yellow text-dark-bg px-4 py-1 rounded-full text-xs font-bold uppercase">Popular</div>}
-    <h3 className="text-xl font-bold mb-2">{title}</h3>
-    <div className="text-4xl font-bold mb-8 text-gradient">{price}</div>
+const PricingCard = ({
+  title,
+  price,
+  description,
+  features,
+  featured = false,
+}: {
+  title: string;
+  price: string;
+  description: string;
+  features: string[];
+  featured?: boolean;
+}) => (
+  <div
+    className={cn(
+      'relative rounded-3xl p-10 border transition-all duration-300 flex flex-col hover:-translate-y-2',
+      featured
+        ? 'bg-gradient-to-b from-primary-yellow/10 to-primary-orange/10 border-primary-yellow scale-105 shadow-2xl shadow-primary-yellow/10'
+        : 'bg-white/5 border-white/10 hover:border-primary-yellow/20'
+    )}
+  >
+    {featured && (
+      <div className="absolute top-5 right-5 bg-primary-yellow text-dark-bg px-4 py-1 rounded-full text-xs font-bold uppercase">
+        Popular
+      </div>
+    )}
+
+    <h3 className="text-2xl font-bold mb-3">{title}</h3>
+
+    <div className="flex items-end gap-2 mb-5">
+      <span className="text-5xl font-black text-gradient">
+        {price}
+      </span>
+
+      <span className="text-slate-400 mb-1">starting</span>
+    </div>
+
+    <p className="text-slate-400 text-sm leading-relaxed mb-8">
+      {description}
+    </p>
+
     <ul className="space-y-4 mb-10 flex-grow">
       {features.map((f, i) => (
-        <li key={i} className="flex items-center gap-3 text-slate-400 text-sm">
-          <CheckCircle2 size={16} className="text-primary-yellow" /> {f}
+        <li
+          key={i}
+          className="flex items-start gap-3 text-slate-300 text-sm leading-relaxed"
+        >
+          <CheckCircle2
+            size={18}
+            className="text-primary-yellow mt-0.5 flex-shrink-0"
+          />
+
+          <span>{f}</span>
         </li>
       ))}
     </ul>
-    <Link to="/contact" className={cn(
-      "py-4 rounded-xl font-bold text-center transition-all",
-      featured ? "bg-gradient text-dark-bg hover:opacity-90" : "bg-white/5 text-white hover:bg-white/10 border border-white/10"
-    )}>
-      Order Now
+
+    <Link
+      to="/contact"
+      className={cn(
+        'py-4 rounded-2xl font-bold text-center transition-all duration-300',
+        featured
+          ? 'bg-gradient text-dark-bg hover:scale-[1.02]'
+          : 'bg-white/5 border border-white/10 hover:border-primary-yellow hover:bg-primary-yellow/10'
+      )}
+    >
+      Get Quote
     </Link>
   </div>
 );
 
 const getServiceIcon = (id: string) => {
-  switch(id) {
-    case 's1': return <Globe size={24} />;
-    case 's2': return <Zap size={24} />;
-    case 's3': return <ShoppingCart size={24} />;
-    case 's4': return <Star size={24} />;
-    case 's5': return <Smartphone size={24} />;
-    case 's6': return <Star size={24} />;
-    default: return <CheckCircle2 size={24} />;
+  switch (id) {
+    case 's1':
+      return <Globe size={24} />;
+    case 's2':
+      return <Zap size={24} />;
+    case 's3':
+      return <ShoppingCart size={24} />;
+    case 's4':
+      return <MonitorSmartphone size={24} />;
+    case 's5':
+      return <LayoutDashboard size={24} />;
+    default:
+      return <Star size={24} />;
   }
 };
 

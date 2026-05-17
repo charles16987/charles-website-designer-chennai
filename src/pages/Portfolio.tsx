@@ -45,12 +45,12 @@ const Portfolio = () => {
                 </div>
               </div>
               <div className="space-y-2">
-                 <h3 className="text-2xl font-bold text-white group-hover:text-primary-yellow transition-colors">{project.title}</h3>
                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 text-sm italic">Located in {project.area}, Chennai</span>
-                    <Link to="#" className="text-primary-yellow opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-sm font-bold">
-                       View Case <ExternalLink size={14} />
-                    </Link>
+                    {/* <span className="text-slate-500 text-sm italic">Located in {project.area}, Chennai</span> */}
+                 <h3 className="text-2xl font-bold text-white group-hover:text-primary-yellow transition-colors">{project.title}</h3>
+                    <a href={project.links} target="_blank"  className="text-primary-yellow opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-sm font-bold">
+                       View <ExternalLink size={14} />
+                    </a>
                  </div>
               </div>
             </motion.div>
