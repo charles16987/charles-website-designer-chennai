@@ -40,7 +40,7 @@ const Contact = () => {
               <ContactCard 
                 icon={<MapPin className="text-primary-yellow" />} 
                 title="Our Location"
-                value="Anna Nagar, Chennai"
+                value=" Chennai"
                 sub="Tamil Nadu, India"
               />
             </div>

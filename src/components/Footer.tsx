@@ -63,12 +63,12 @@ export const Footer = () => {
             />
             <ContactItem 
               icon={<Mail className="text-primary-yellow" size={18} />} 
-              text="hello@charlesdesigner.com" 
+              text="charlescharlie1671998@gmail.com" 
               subText="Direct email support"
             />
             <ContactItem 
               icon={<MapPin className="text-primary-yellow" size={18} />} 
-              text="Anna Nagar, Chennai, India" 
+              text=" Chennai, India" 
               subText="Our Main Office"
             />
           </ul>
